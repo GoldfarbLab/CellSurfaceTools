@@ -1,0 +1,16 @@
+Package: CellSurfaceTools
+Type: Package
+Title: Tools for Interacting with Cell Surface and Plasma Membrane Data
+Version: 0.1.0
+Author: person("Dennis", "Goldfarb", email="d.goldfarb@wustl.edu", role = c("aut",))
+Maintainer: Dennis Goldfarb <d.goldfarb@wustl.edu>
+Description: This package will provide a set of shared tools and lists useful 
+    for working with data related to cell surface and plasma membrane proteins.
+Depends: R (>= 4.00)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports:
+    tidyverse
+Suggests: testthat
