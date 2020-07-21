@@ -6,7 +6,7 @@ Author: person("Dennis", "Goldfarb", email="d.goldfarb@wustl.edu", role = c("aut
 Maintainer: Dennis Goldfarb <d.goldfarb@wustl.edu>
 Description: This package will provide a set of shared tools and lists useful 
     for working with data related to cell surface and plasma membrane proteins.
-Depends: R (>= 4.00)
+Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
