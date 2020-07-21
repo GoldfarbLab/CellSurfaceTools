@@ -9,10 +9,12 @@ library(devtools)
 #############################################
 
 # read human surface/plasma
-human_surface_plasma_geneLevel <- read_tsv(here('data/human_surface_and_plasma_membrane_genes.txt'))
+load(here('data/human_surface_and_plasma_membrane_geneLevel.rda'))
+human_surface_plasma_geneLevel <- as_tibble(human_surface_and_plasma_membrane_geneLevel)
 human_surface_plasma_geneLevel <- mutate(human_surface_plasma_geneLevel, GeneID = as.integer(GeneID))
 
-human_surface_plasma_protLevel <- read_tsv(here('data/human_surface_and_plasma_membrane_proteins.txt'))
+load(here('data/human_surface_and_plasma_membrane_protLevel.rda'))
+human_surface_plasma_protLevel <- as_tibble(human_surface_and_plasma_membrane_protLevel)
 human_surface_plasma_protLevel <- mutate(human_surface_plasma_protLevel, GeneID = as.integer(GeneID))
 
 # read monkey surface
@@ -105,8 +107,8 @@ monkey_protLevel <- convertMulticolumnToSingle(monkey_protLevel)
 monkey_surface_and_plasma_membrane_geneLevel <- filter(monkey_geneLevel, monkey_geneLevel$`Num cell surface evidence` > 0 | monkey_geneLevel$`GO plasma membrane`==T)
 monkey_surface_and_plasma_membrane_protLevel <- filter(monkey_protLevel, monkey_protLevel$`Num cell surface evidence` > 0 | monkey_protLevel$`GO plasma membrane`==T)
 
-write_tsv(monkey_surface_and_plasma_membrane_geneLevel, here("data/monkey_surface_and_plasma_membrane_genes.txt"))
-write_tsv(monkey_surface_and_plasma_membrane_protLevel, here("data/monkey_surface_and_plasma_membrane_proteins.txt"))
+#write_tsv(monkey_surface_and_plasma_membrane_geneLevel, here("data/monkey_surface_and_plasma_membrane_genes.txt"))
+#write_tsv(monkey_surface_and_plasma_membrane_protLevel, here("data/monkey_surface_and_plasma_membrane_proteins.txt"))
 usethis::use_data(monkey_surface_and_plasma_membrane_geneLevel, overwrite = TRUE)
 usethis::use_data(monkey_surface_and_plasma_membrane_protLevel, overwrite = TRUE)
 
@@ -114,8 +116,8 @@ usethis::use_data(monkey_surface_and_plasma_membrane_protLevel, overwrite = TRUE
 monkey_surface_geneLevel <- filter(monkey_geneLevel, monkey_geneLevel$`Num cell surface evidence` > 0)
 monkey_surface_protLevel <- filter(monkey_protLevel, monkey_protLevel$`Num cell surface evidence` > 0)
 
-write_tsv(monkey_surface_geneLevel, here("data/monkey_surface_genes.txt"))
-write_tsv(monkey_surface_protLevel, here("data/monkey_surface_proteins.txt"))
+#write_tsv(monkey_surface_geneLevel, here("data/monkey_surface_genes.txt"))
+#write_tsv(monkey_surface_protLevel, here("data/monkey_surface_proteins.txt"))
 usethis::use_data(monkey_surface_geneLevel, overwrite = TRUE)
 usethis::use_data(monkey_surface_protLevel, overwrite = TRUE)
 
@@ -123,8 +125,8 @@ usethis::use_data(monkey_surface_protLevel, overwrite = TRUE)
 monkey_plasma_membrane_geneLevel <- filter(monkey_geneLevel, monkey_geneLevel$`GO plasma membrane`==T)
 monkey_plasma_membrane_protLevel <- filter(monkey_protLevel, monkey_protLevel$`GO plasma membrane`==T)
 
-write_tsv(monkey_plasma_membrane_geneLevel, here("data/monkey_plasma_membrane_genes.txt"))
-write_tsv(monkey_plasma_membrane_protLevel, here("data/monkey_plasma_membrane_proteins.txt"))
+#write_tsv(monkey_plasma_membrane_geneLevel, here("data/monkey_plasma_membrane_genes.txt"))
+#write_tsv(monkey_plasma_membrane_protLevel, here("data/monkey_plasma_membrane_proteins.txt"))
 usethis::use_data(monkey_plasma_membrane_geneLevel, overwrite = TRUE)
 usethis::use_data(monkey_plasma_membrane_protLevel, overwrite = TRUE)
 

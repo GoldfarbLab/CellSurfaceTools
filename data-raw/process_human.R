@@ -1,6 +1,7 @@
-library(tidyverse)
 library(here)
 library(devtools)
+library(data.table)
+library(tidyverse)
 
 #############################################
 ## Create Gene-level table
@@ -88,15 +89,17 @@ human_protLevel <- convertMulticolumnToSingle(human_protLevel)
 human_surface_and_plasma_membrane_geneLevel <- filter(human_geneLevel, human_geneLevel$`Num cell surface evidence` > 0 | human_geneLevel$`GO plasma membrane`==T)
 human_surface_and_plasma_membrane_protLevel <- filter(human_protLevel, human_protLevel$`Num cell surface evidence` > 0 | human_protLevel$`GO plasma membrane`==T)
 
-write_tsv(human_surface_and_plasma_membrane_geneLevel, here("data/human_surface_and_plasma_membrane_genes.txt"))
-write_tsv(human_surface_and_plasma_membrane_protLevel, here("data/human_surface_and_plasma_membrane_proteins.txt"))
+#write_tsv(human_surface_and_plasma_membrane_geneLevel, here("data/human_surface_and_plasma_membrane_genes.tab"))
+#write_tsv(human_surface_and_plasma_membrane_protLevel, here("data/human_surface_and_plasma_membrane_proteins.tab"))
+usethis::use_data(human_surface_and_plasma_membrane_geneLevel, overwrite = TRUE)
+usethis::use_data(human_surface_and_plasma_membrane_protLevel, overwrite = TRUE)
 
 # Cell Surface
 human_surface_geneLevel <- filter(human_geneLevel, human_geneLevel$`Num cell surface evidence` > 0)
 human_surface_protLevel <- filter(human_protLevel, human_protLevel$`Num cell surface evidence` > 0)
 
-write_tsv(human_surface_geneLevel, here("data/human_surface_genes.txt"))
-write_tsv(human_surface_protLevel, here("data/human_surface_proteins.txt"))
+#write_tsv(human_surface_geneLevel, here("data/human_surface_genes.tab"))
+#write_tsv(human_surface_protLevel, here("data/human_surface_proteins.tab"))
 usethis::use_data(human_surface_geneLevel, overwrite = TRUE)
 usethis::use_data(human_surface_protLevel, overwrite = TRUE)
 
@@ -104,8 +107,8 @@ usethis::use_data(human_surface_protLevel, overwrite = TRUE)
 human_plasma_membrane_geneLevel <- filter(human_geneLevel, human_geneLevel$`GO plasma membrane`==T)
 human_plasma_membrane_protLevel <- filter(human_protLevel, human_protLevel$`GO plasma membrane`==T)
 
-write_tsv(human_plasma_membrane_geneLevel, here("data/human_plasma_membrane_genes.txt"))
-write_tsv(human_plasma_membrane_protLevel, here("data/human_plasma_membrane_proteins.txt"))
+#write_tsv(human_plasma_membrane_geneLevel, here("data/human_plasma_membrane_genes.tab"))
+#write_tsv(human_plasma_membrane_protLevel, here("data/human_plasma_membrane_proteins.tab"))
 usethis::use_data(human_plasma_membrane_geneLevel, overwrite = TRUE)
 usethis::use_data(human_plasma_membrane_protLevel, overwrite = TRUE)
 
@@ -113,8 +116,8 @@ usethis::use_data(human_plasma_membrane_protLevel, overwrite = TRUE)
 human_CRISPR_geneLevel <- filter(human_geneLevel, human_geneLevel$`CRISPR` == T)
 human_CRISPR_protLevel <- filter(human_protLevel, human_protLevel$`CRISPR` == T)
 
-write_tsv(human_CRISPR_geneLevel, here("data/human_CRISPR_genes.txt"))
-write_tsv(human_CRISPR_protLevel, here("data/human_CRISPR_proteins.txt"))
+#write_tsv(human_CRISPR_geneLevel, here("data/human_CRISPR_genes.tab"))
+#write_tsv(human_CRISPR_protLevel, here("data/human_CRISPR_proteins.tab"))
 usethis::use_data(human_CRISPR_geneLevel, overwrite = TRUE)
 usethis::use_data(human_CRISPR_protLevel, overwrite = TRUE)
 
